@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monaco Editor in Flask</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.51.0-dev-20240628/min/vs/editor/editor.main.css">
+    <style>
+        #container {
+            width: 800px;
+            height: 600px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Monaco Editor in Flask</h1>
+    <div id="container"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.51.0-dev-20240628/min/vs/loader.js"></script>
+    <script>
+        require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.51.0-dev-20240628/min/vs' }});
+        require(['vs/editor/editor.main'], function () {
+            var editor = monaco.editor.create(document.getElementById('container'), {
+                value: `// Código em C++ para Arduino: Explore a programação no Arduino de maneira divertida e educativa com a Causa-Efeito, SINER.\n\n` +
+                       `void setup() {\n` +
+                       `    // Inicializa a comunicação serial\n` +
+                       `    Serial.begin(9600);\n` +
+                       `}\n\n` +
+                       `void loop() {\n` +
+                       `    // Imprime uma mensagem especial pela porta serial\n` +
+                       `    Serial.println("Olá, Wandinho! Bem-vindo ao universo do Arduino com a Causa-Efeito, SINER!");\n` +
+                       `\n` +
+                       `    // Aguarda um momento antes da próxima aventura\n` +
+                       `    delay(1000);\n` +
+                       `}\n`,
+                language: 'cpp',
+                theme: 'vs-dark'
+            });
+        });
+    </script>
+</body>
+</html>
